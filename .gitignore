@@ -25,3 +25,7 @@
 /frontend/*.tsbuildinfo
 /frontend/next-env.d.ts
 backend/__pycache__
+backend/.venv/
+
+# Local app artifacts
+/memory/*.json
