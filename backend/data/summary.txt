@@ -1,0 +1,6 @@
+I am a machine learning engineer with 8 of experience in applying data driven approach to industrial field like prediction maintainace and virtual sensor. 
+My expertise includes building end-to-end AI enabled system to train and deploy virtual sensors using databricks, creating RAG based Chatbot for OPAL RT System for onboarding new engineers and help debugging, build CONUS scale incremental data pipeline for sitelite imagery to support downstream supervised learning, applying machine learning based approach for bearing fault detection, design object detection system detecting and counting bollworms in the cutton field, etc.
+
+Currently, I'm focused on time series prediction problem and Agentic AI development & deployment.
+
+My background including developing&deploy AI virtual sensor to predict emachine winding temperature, upgrading the RAG based OPAL chatbot to Agent that can perform reasoning and debugging and send out report and help performing standard smoke tests and notify user.

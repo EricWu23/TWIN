@@ -1,0 +1,54 @@
+{
+  "full_name": "Yujiang Wu",
+  "name": "Yujiang",
+  "current_role": "Machine Learning Engineer",
+  "location": "Cary,NC",
+  "email": "wuyujiang@johndeere.com",
+  "linkedin": "linkedin.com/in/ywu82",
+  "specialties": [
+    "Machine Learning",
+    "Control Theory",
+    "AI Enabled System",
+    "Data Engineering",
+    "Data Science",
+    "LLM",
+    "RAG",
+    "AI Agent",
+    "Electrical Engineering"
+  ],
+  "years_experience": 8,
+  "education": [
+    {
+      "degree": "Master of Science in Artificial Intelligence",
+      "institution": "Johns Hopkins University",
+      "year": "2023"
+    },
+    {
+      "degree": "Master of Science in Electrical Engineering",
+      "institution": "University of Wisconsin-Madison",
+      "year": "2017"
+    },
+    {
+      "degree": "Bachelor of Science in Electrical Engineering",
+      "institution": "Illinois Institute of Technology at Chicago",
+      "year": "2015"
+    }
+  ],
+  "projects": [
+    {
+      "name": "Telemetry Data-driven Virtual Sensor Platform",
+      "description": "Developed a telemetry data-driven virtual sensor platform for John Deere.",
+      "year": "2026"
+    },
+    {
+      "name": "Data Pipeline for Conus grade sitelite imagery",
+      "description": "Developed a data pipeline for Conus grade sitelite imagery.",
+      "year": "2025"
+    },
+    {
+      "name": "RAG OPAL Chatbot for training engineer on OPAL RT system and debuging OPAL RT system",
+      "description": "Developed a RAG OPAL Chatbot for training engineer on OPAL RT system and debuging OPAL RT system.",
+      "year": "2024"
+    }
+  ]
+}
