@@ -2,6 +2,60 @@ import os
 import shutil
 import zipfile
 import subprocess
+import time
+import stat
+
+
+def remove_tree_with_retries(path: str, retries: int = 5, delay_s: float = 1.0) -> None:
+    """
+    Windows can temporarily lock files/folders (e.g. __pycache__ under OneDrive).
+    This makes cleanup for `lambda-package/` more resilient.
+    """
+
+    if not os.path.exists(path):
+        return
+
+    def onerror(func, p, exc_info):
+        # Try to clear read-only bit then retry the failing op.
+        try:
+            os.chmod(p, stat.S_IWRITE)
+            func(p)
+        except Exception:
+            pass
+
+    for attempt in range(1, retries + 1):
+        try:
+            shutil.rmtree(path, onerror=onerror)
+            return
+        except PermissionError as e:
+            if attempt == retries:
+                break
+            print(f"Warning: failed deleting {path} (attempt {attempt}/{retries}): {e}")
+            time.sleep(delay_s)
+
+    # Last resort: don't block deployments.
+    shutil.rmtree(path, ignore_errors=True)
+
+
+def remove_file_with_retries(path: str, retries: int = 5, delay_s: float = 1.0) -> None:
+    if not os.path.exists(path):
+        return
+
+    for attempt in range(1, retries + 1):
+        try:
+            os.remove(path)
+            return
+        except PermissionError as e:
+            if attempt == retries:
+                break
+            print(f"Warning: failed deleting {path} (attempt {attempt}/{retries}): {e}")
+            time.sleep(delay_s)
+
+    # Last resort
+    try:
+        os.remove(path)
+    except Exception:
+        pass
 
 
 def main():
@@ -9,9 +63,9 @@ def main():
 
     # Clean up
     if os.path.exists("lambda-package"):
-        shutil.rmtree("lambda-package")
+        remove_tree_with_retries("lambda-package")
     if os.path.exists("lambda-deployment.zip"):
-        os.remove("lambda-deployment.zip")
+        remove_file_with_retries("lambda-deployment.zip")
 
     # Create package directory
     os.makedirs("lambda-package")
@@ -61,7 +115,8 @@ def main():
 
     # Show package size
     size_mb = os.path.getsize("lambda-deployment.zip") / (1024 * 1024)
-    print(f"✓ Created lambda-deployment.zip ({size_mb:.2f} MB)")
+    # Keep output ASCII-only for Windows terminals with cp1252 encoding.
+    print(f"Created lambda-deployment.zip ({size_mb:.2f} MB)")
 
 
 if __name__ == "__main__":
