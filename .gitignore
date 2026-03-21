@@ -1,6 +1,17 @@
+# Terraform
+*.tfstate
+*.tfstate.*
+.terraform/
+.terraform.lock.hcl
+terraform.tfstate.d/
+*.tfvars
+!terraform.tfvars
+!prod.tfvars
+
 .env
 /backend/.env
 
+# Lambda packages
 lambda-deployment.zip
 lambda-package/
 
@@ -27,8 +38,12 @@ lambda-package/
 /frontend/.vercel
 /frontend/*.tsbuildinfo
 /frontend/next-env.d.ts
+
 backend/__pycache__
 backend/.venv/
+backend/*.pyc
+backend/uv.lock
 
 # Local app artifacts
 /memory/*.json
+
