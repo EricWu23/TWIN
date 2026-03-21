@@ -10,6 +10,7 @@ terraform.tfstate.d/
 
 .env
 /backend/.env
+!.env.example
 
 # Lambda packages
 lambda-deployment.zip
@@ -44,6 +45,9 @@ backend/.venv/
 backend/*.pyc
 backend/uv.lock
 
-# Local app artifacts
-/memory/*.json
+# Memory storage (contains conversation history)
+memory/
+
+# AWS
+.aws/
 
